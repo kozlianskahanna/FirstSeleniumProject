@@ -99,6 +99,63 @@ public class HWFindElementTest {
         System.out.println(buttons.size());
     }
 
+    // HW:В FirstSeleniumProject в созданном для домашнего задания
+    // тестовом классе добавьте новый тестовый метод,
+    // который найдет по стратегии cssSelector те же элементы,
+    // которые вы нашли в предыдущих методах по тэгу,id и классу на странице......
+
+    @Test
+    public void findElementsByCssSelector() {
+
+        WebElement html = driver.findElement(By.cssSelector("html"));
+        System.out.println(html.getText());
+
+        WebElement head = driver.findElement(By.cssSelector("head"));
+        System.out.println(head.getText());
+
+        WebElement title = driver.findElement(By.cssSelector("title"));
+        System.out.println(title.getText());
+
+        WebElement h2 = driver.findElement(By.cssSelector("h2"));
+        System.out.println(h2.getText());
+
+        WebElement p = driver.findElement(By.cssSelector("p"));
+        System.out.println(p.getText());
+
+        WebElement body = driver.findElement(By.cssSelector("body"));
+        System.out.println(body.getText());
+
+        WebElement success = driver.findElement(By.cssSelector("#dialog-notifications-success"));
+        System.out.println(success.getAttribute("id"));
+
+        WebElement error = driver.findElement(By.cssSelector("#dialog-notifications-error"));
+        System.out.println(error.getAttribute("id"));
+
+        WebElement bar = driver.findElement(By.cssSelector("#bar-notification"));
+        System.out.println(bar.getAttribute("id"));
+
+        WebElement uiid = driver.findElement(By.cssSelector("#ui-id-1"));
+        System.out.println(uiid.getAttribute("id"));
+
+        WebElement newsletter = driver.findElement(By.cssSelector("#newsletter-email"));
+        System.out.println(newsletter.getAttribute("id"));
+
+        WebElement searchBox = driver.findElement(By.cssSelector("#small-searchterms"));
+        System.out.println(searchBox.getAttribute("id"));
+
+        List<WebElement> headers = driver.findElements(By.cssSelector(".header"));
+        System.out.println(headers.size());
+
+        List<WebElement> topics = driver.findElements(By.cssSelector(".topic-html-content-body"));
+        System.out.println(topics.size());
+
+        List<WebElement> footers = driver.findElements(By.cssSelector(".footer"));
+        System.out.println(footers.size());
+
+        List<WebElement> buttons = driver.findElements(By.cssSelector(".button-1"));
+        System.out.println(buttons.size());
+    }
+
 }
 
 
