@@ -156,6 +156,63 @@ public class HWFindElementTest {
         System.out.println(buttons.size());
     }
 
+    //HW:В FirstSeleniumProject в созданном для домашнего задания тестовом классе
+    // добавьте новый тестовый метод,
+    // который найдет по стратегии xPath те же элементы, которые вы нашли
+    // в предыдущем методе по стратегии cssSelector на странице
+
+    @Test
+    public void findElementsByXpath() {
+
+        WebElement html = driver.findElement(By.xpath("//html"));
+        System.out.println(html.getText());
+
+        WebElement head = driver.findElement(By.xpath("//head"));
+        System.out.println(head.getText());
+
+        WebElement title = driver.findElement(By.xpath("//title"));
+        System.out.println(title.getText());
+
+        WebElement h2 = driver.findElement(By.xpath("//h2"));
+        System.out.println(h2.getText());
+
+        WebElement p = driver.findElement(By.xpath("//p"));
+        System.out.println(p.getText());
+
+        WebElement body = driver.findElement(By.xpath("//body"));
+        System.out.println(body.getText());
+
+        WebElement success = driver.findElement(By.xpath("//*[@id='dialog-notifications-success']"));
+        System.out.println(success.getAttribute("id"));
+
+        WebElement error = driver.findElement(By.xpath("//*[@id='dialog-notifications-error']"));
+        System.out.println(error.getAttribute("id"));
+
+        WebElement bar = driver.findElement(By.xpath("//*[@id='bar-notification']"));
+        System.out.println(bar.getAttribute("id"));
+
+        WebElement uiid = driver.findElement(By.xpath("//*[@id='ui-id-1']"));
+        System.out.println(uiid.getAttribute("id"));
+
+        WebElement newsletter = driver.findElement(By.xpath("//*[@id='newsletter-email']"));
+        System.out.println(newsletter.getAttribute("id"));
+
+        WebElement searchBox = driver.findElement(By.xpath("//*[@id='small-searchterms']"));
+        System.out.println(searchBox.getAttribute("id"));
+
+        List<WebElement> headers = driver.findElements(By.xpath("//*[@class='header']"));
+        System.out.println(headers.size());
+
+        List<WebElement> topics = driver.findElements(By.xpath("//*[@class='topic-html-content-body']"));
+        System.out.println(topics.size());
+
+        List<WebElement> footers = driver.findElements(By.xpath("//*[@class='footer']"));
+        System.out.println(footers.size());
+
+        List<WebElement> buttons = driver.findElements(By.xpath("//*[@class='button-1']"));
+        System.out.println(buttons.size());
+    }
+
 }
 
 

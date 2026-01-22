@@ -34,8 +34,8 @@ public class FindElementTest {
     public void FindElementByTagName() {
         //fin an element
         //tag name -> h1
-        WebElement h1 = driver.findElement(By.tagName("h1"));          // 👉Ищем первый элемент с тегом <h1>
-        System.out.println(h1.getText());                              // 👉 Выводим текст элемента в консоль
+        WebElement element = driver.findElement(By.tagName("h1"));        // 👉Ищем первый элемент с тегом <h1>
+        System.out.println(element.getText());                             // 👉 Выводим текст элемента в консоль
 
         WebElement h2 = driver.findElement(By.tagName("h2"));
         System.out.println(h2.getText());
@@ -119,7 +119,70 @@ public class FindElementTest {
         driver.findElement(By.cssSelector(".title-container span.title")); // class + <space> + tag + class// 👉 Ищем <span> с классом "title", потомок класса "title-container"
     }
 
+    @Test
+    public void findElementByXpath() {
+        //      //some_tag[@attribute='value']
+        //      //tag[2]
+        //      //tag[@attr='value1' and @attr2='value2']
+        //       text(); contains()
+
+        // driver.findElement(By.cssSelector("h1"));
+        driver.findElement(By.xpath("//h1"));
+
+        //  driver.findElement(By.cssSelector("#city"));
+        driver.findElement(By.xpath("//input[@id='city']"));
+
+        //driver.findElement(By.cssSelector(".telephone"));
+        driver.findElement(By.xpath("//a[@class='telephone']"));
+
+        //driver.findElement(By.cssSelector("[href='/search']"));
+        //driver.findElement(By.cssSelector("[for='city']"));
+        driver.findElement(By.xpath("//a[@href='/search']"));
+        driver.findElement(By.xpath("//label[@for='city']"));
+
+        // contains -> *
+        // driver.findElement(By.cssSelector("[href*='car']"));
+        driver.findElement(By.xpath("//a[contains(@href,'car')]"));
+
+        //  start -> ^
+        // driver.findElement(By.cssSelector("[href^='/let']"));
+        driver.findElement(By.xpath("//a[starts-with(@href,'/let')]"));
+
+        //text
+        //WebElement text = driver.findElement(By.xpath("//*[contains(text(),'This car exceeded my expectations')]"));
+        WebElement text = driver.findElement(By.xpath("//*[contains(.,'This car exceeded my expectations')]"));
+        System.out.println(text.getText());
+
+        driver.findElement(By.xpath("//span[text()=' Latest feedback from our customers ']"));
+        driver.findElement(By.xpath("//span[.=' Latest feedback from our customers ']"));
+
+        // driver.findElement(By.cssSelector("a.navigation-link[href='/search']"));// tag+class+pare
+        driver.findElement(By.xpath("//a[@class='navigation-link' and @href='/search']"));
+        //driver.findElement(By.cssSelector("div.social-networks")); // tag+class
+        driver.findElement(By.xpath("//div[@class='social-networks']"));
+
+        //driver.findElement(By.cssSelector(".logo>img"));
+        driver.findElement(By.xpath("//a[@class='logo']/img"));
+        //driver.findElement(By.cssSelector(".feedback .feedback-date"));
+        driver.findElement(By.xpath("//div[@class='feedback']//*[@class='feedback-date']"));
+    }
+
+    @Test
+    public void findElementByXpathFamily() {
+        //parent
+        driver.findElement(By.xpath("//h1/parent::*"));
+        driver.findElement(By.xpath("//h1/parent::div"));
+        driver.findElement(By.xpath("//h1/.."));
+
+        //ancestor
+        driver.findElement(By.xpath("//h1/ancestor::*"));// html
+        driver.findElement(By.xpath("//h1/ancestor::div")); //two steps above
+        driver.findElement(By.xpath("//h1/ancestor::div[2]"));//two steps above
+    }
 }
+
+//  cssSelector -> div>a        xpath -> div/a  - one step
+//  cssSelector -> div a        xpath -> div//a - one or more steps
 
 
 //❗️❗️❗️ findElement                  ищет один элемент (если не найден → ошибка)
@@ -134,7 +197,7 @@ public class FindElementTest {
 //❗️❗️❗ findElementByPartialLinkText	Ищет ссылку по части текста
 //❗️❗️❗ findElementByCssSelector	    Ищет элементы с помощью CSS-селекторов (id, класс, атрибуты, композиции
 
-//By.xpath
+//❗️❗️❗By.xpath
 
 
 
