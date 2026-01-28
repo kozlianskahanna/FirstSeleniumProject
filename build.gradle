@@ -18,3 +18,24 @@ dependencies {
 test {
     useTestNG()
 }
+task qa(type:Test){
+    useTestNG()
+    if (project.hasProperty('browser')){
+        systemProperty 'browser',"${browser}"
+    }
+}
+def registerTask(String taskName, String suitePath) {
+    tasks.register(taskName,Test) {
+        testClassesDirs = sourceSets.test.output.classesDirs
+        classpath = sourceSets.test.runtimeClasspath
+        useTestNG() {
+            suites suitePath
+        }
+        if (project.hasProperty('browser')) {
+            systemProperty 'browser', "${browser}"
+        }
+    }
+}
+
+registerTask('quick','src/test/resources/quick.xml')
+registerTask('regr','src/test/resources/regression.xml')

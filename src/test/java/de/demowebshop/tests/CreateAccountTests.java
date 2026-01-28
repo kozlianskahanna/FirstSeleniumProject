@@ -1,4 +1,4 @@
-package de.demowebshop;
+package de.demowebshop.tests;
 
 import de.demowebshop.core.TestBase;
 import org.testng.Assert;
