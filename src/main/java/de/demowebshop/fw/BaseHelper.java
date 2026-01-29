@@ -1,8 +1,10 @@
 package de.demowebshop.fw;
 
-import org.openqa.selenium.By;
-import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.WebElement;
+import com.google.common.io.Files;
+import org.openqa.selenium.*;
+
+import java.io.File;
+import java.io.IOException;
 
 
 public class BaseHelper {
@@ -30,6 +32,17 @@ public class BaseHelper {
     }
 
     public WebElement findElement(By locator) {
-        return driver.findElement(locator);//+
+        return driver.findElement(locator);
+    }
+    public String takeScreenshot() {
+        File tmp = ((TakesScreenshot) driver).getScreenshotAs(OutputType.FILE);
+        File screen = new File("screenshots/screen-" + System.currentTimeMillis() + ".png");
+
+        try {
+            Files.copy(tmp,screen);
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
+        return screen.getAbsolutePath();
     }
 }
